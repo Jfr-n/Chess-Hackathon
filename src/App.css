@@ -1,1 +1,7 @@
+#chess{
+    display: grid;
+    align-content: center;
+    padding-left: 500px;
 
+    height: 100vh;
+}
