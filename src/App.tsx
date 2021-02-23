@@ -1,7 +1,5 @@
-import React from 'react';
 import './App.css';
-import Chess from './chess_components/Board/Chess';
-
+import Chess from './chess_components/Board/Chess'
 
 function App() {
   return (
