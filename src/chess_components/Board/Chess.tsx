@@ -1,14 +1,38 @@
 import React from 'react';
 import './Chess.css';
 import Tile from '../Tile/Tile'
+import { type } from 'os';
 
 const verticalaxis = [1,2,3,4,5,6,7,8];
-const horizontalaxis = ["a","b","c","d","e","f","g","h"]
+//const horizontalaxis = ["a","b","c","d","e","f","g","h"]
 
 interface Piece{
     image: string
     x: number
     y: number
+}
+
+const pieces: Piece[]=[];
+
+for(let p = 0; p < 2; p++){
+    const type = (p ===0) ? "B" : "W" 
+    const y = (p === 0 ? 7 : 0)
+
+    // Monarchs
+    pieces.push({image:`chess_pieces/q_${type}.png`, x: 3, y})
+    pieces.push({image:`chess_pieces/k_${type}.png`, x: 4, y })
+    pieces.push({image:`chess_pieces/q_${type}.png`, x: 3, y })
+    pieces.push({image:`chess_pieces/k_${type}.png`, x: 4, y })
+    // bishops
+    pieces.push({image:`chess_pieces/b_${type}.png`, x: 5, y })
+    pieces.push({image:`chess_pieces/b_${type}.png`, x: 2, y})
+    // knights
+    pieces.push({image:`chess_pieces/k_${type}.png`, x: 1, y })
+    pieces.push({image:`chess_pieces/k_${type}.png`, x: 6, y })
+   
+    //Rooks 
+    pieces.push({image:`chess_pieces/r_${type}.png`, x: 0, y})
+    pieces.push({image:`chess_pieces/r_${type}.png`, x: 7, y})
 }
 
 export default function Chessboard(){
@@ -17,10 +41,25 @@ export default function Chessboard(){
 
 
     for(let j = verticalaxis.length - 1; j >= 0; j--){
-        for(let i =0; i < horizontalaxis.length; i++){
+        for(let i =0; i < 8; i++){
             const num = i + j + 2
+            for(let i = 0; i < 8; i++){
+                pieces.push({image:'chess_pieces/p_B.png', x: i, y: 6})
 
-            board.push(<Tile image="chess_pieces/p_B.png"num={num}/>);
+            }
+            for(let i = 0; i < 8; i++){
+                pieces.push({image:'chess_pieces/p_W.png', x: i, y: 1})
+
+            }
+
+
+            let image = undefined;
+            pieces.forEach(p =>{
+                if(p.x === i && p.y === j){
+                    image = p.image
+                }
+            })
+            board.push(<Tile key={`${i},${j}`}image={image} num={num}/>);
 
 
         }
