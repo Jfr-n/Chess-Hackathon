@@ -7,14 +7,33 @@
 }
 
  .dark-tile{
-    background-color: rgb(75, 74, 74);
+    background-color: grey;
 }
 
 .light-tile{
+   
     background-color: var(--backgroundcolor);
 
 }
 
 .grid img{
     width: 80px;
+}
+
+.grid .chessPiece{
+    width:100px;
+    height:100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+}
+
+.grid .chessPiece:hover{
+    cursor: grab;
+
+
+}
+
+.grid .chessPiece:active{
+    cursor: grabbing;
 }
